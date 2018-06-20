@@ -1,0 +1,77 @@
+// import chai, declare expect variable
+const expect = require('chai').expect;
+
+// import adder
+const fizzbuzz = require('../fizzBuzzer');
+
+// unit tests for our `adder` function
+describe('fizzbuzz', function() {
+
+  // test the normal case
+  it('should see if divisible by 3 and return fizz', function() {
+    // range of normal inputs, including
+    // notable cases like negative answers
+    const fizztest = [
+      {a: 3, expected: 'fizz'},
+      {a: 6, expected: 'fizz'},
+      {a: 9, expected: 'fizz'}
+    ];
+    // for each set of inputs (a, b), `adder` should
+    // produce the expected value
+    fizztest.forEach(function(input) {
+      const answer = fizzbuzz(input.a);
+      expect(answer).to.equal(input.expected);
+    });
+  });
+
+  // test the normal case
+  it('should see if divisible by 5 and return buzz', function() {
+    // range of normal inputs, including
+    // notable cases like negative answers
+    const buzztest = [
+      {a: 5, expected: 'buzz'},
+      {a: 10, expected: 'buzz'},
+      {a: 35, expected: 'buzz'}
+    ];
+    // for each set of inputs (a, b), `adder` should
+    // produce the expected value
+    buzztest.forEach(function(input) {
+      const answer = fizzbuzz(input.a);
+      expect(answer).to.equal(input.expected);
+    });
+  });
+
+    it('should see if divisible by 15 and return fizzbuzz', function() {
+    // range of normal inputs, including
+    // notable cases like negative answers
+    const fizzbuzztest = [
+      {a: 15, expected: 'fizz-buzz'},
+      {a: 300, expected: 'fizz-buzz'},
+      {a: 1500, expected: 'fizz-buzz'}
+    ];
+    // for each set of inputs (a, b), `adder` should
+    // produce the expected value
+    fizzbuzztest.forEach(function(input) {
+      const answer = fizzbuzz(input.a);
+      expect(answer).to.equal(input.expected);
+    });
+  });
+
+
+  it('should raise error if args not numbers', function() {
+    // range of bad inputs where not both are numbers
+    const badInputs = [
+      ['a'],
+      ['&^%'],
+      ['this is a string']
+    ];
+    // prove that an error is raised for bad inputs
+    badInputs.forEach(function(input) {
+      expect(function() {
+        adder(input[0]);
+      }).to.throw(Error);
+    });
+  });
+
+
+});
